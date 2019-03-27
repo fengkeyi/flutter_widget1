@@ -7,6 +7,10 @@ class LoginPage extends StatefulWidget{
 
 class _LoginPageState extends State<LoginPage>{
 
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -25,7 +29,38 @@ class _LoginPageState extends State<LoginPage>{
               ),
               SizedBox(height:120.0),
               TextField(
-
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  filled: true,
+                  labelText: 'username'
+                ),
+              ),
+              SizedBox(height: 12.0,),
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  filled: true,
+                  labelText: 'password'
+                ),
+                obscureText: true,
+              ),
+              ButtonBar(
+                alignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  FlatButton(
+                    onPressed:(){
+                      _passwordController.clear();
+                      _usernameController.clear();
+                    },
+                    child: Text('CANCEL'),
+                  ),
+                  RaisedButton(
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    child: Text('SURE'),
+                  )
+                ],
               )
 
             ],
